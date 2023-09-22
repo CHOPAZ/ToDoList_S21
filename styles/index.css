@@ -1,0 +1,95 @@
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toDo__wrapper {
+  background-color: var(--color-bg);
+  border-radius: var(--border-15);
+  padding: 44px 60px;
+  min-width: 636px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* форма добавления задачи */
+
+.toDo__form {
+  display: flex;
+}
+
+.toDo__input {
+  border: none;
+  border-radius: var(--border-input);
+  width: 100%;
+  font-size: 18px;
+  padding: 20px 15px;
+}
+
+.btn {
+  border: none;
+  border-radius: var(--border-btn);
+  background-color: var(--color-btn);
+  font-size: 18px;
+  padding: 20px 30px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--color-btn-hover);
+}
+
+
+/* лист с задачами */
+
+.toDo__list {
+  background-color: var(--color-bg-list);
+  border-radius: var(--border-15);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 621px;
+  overflow: auto;
+}
+
+/* лист с задачами - card */
+
+.toDo__list-card {
+  padding: 30px 20px;
+  border-radius: var(--border-10);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toDo__list-input {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+}
+
+.toDo__list-input > input {
+  width: 25px;
+  height: 25px;
+}
+
+.toDo__btn-delete {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Если задача не выолненна */
+.toDo__list-card_active {
+  background-color: var(--color-bg-active);
+}
+/* Если задача выолненна */
+
+.toDo__list-card_done {
+  background-color: var(--color-bg-done);
+  text-decoration: line-through;
+}

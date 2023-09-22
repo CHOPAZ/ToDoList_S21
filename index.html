@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>ToDo List</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./styles/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./styles/global.css"
+    />
+  </head>
+  <body>
+    <main class="toDo">
+      <div class="toDo__wrapper">
+        <form class="toDo__form">
+          <input
+            type="text"
+            class="toDo__input"
+          />
+          <button class="btn">Добавить</button>
+        </form>
+        <section class="toDo__list">
+          <div class="toDo__list-card toDo__list-card_active">
+            <div class="toDo__list-input">
+              <input type="checkbox" /> Some task
+            </div>
+            <button class="toDo__btn-delete">
+              <img
+                src="./images/Garbage.svg"
+                alt="Кнопка удаления задачи"
+              />
+            </button>
+          </div>
+          <div class="toDo__list-card toDo__list-card_done">
+            <div class="toDo__list-input">
+              <input type="checkbox" /> Some task
+            </div>
+            <button class="toDo__btn-delete">
+              <img
+                src="./images/Garbage.svg"
+                alt="Кнопка удаления задачи"
+              />
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
