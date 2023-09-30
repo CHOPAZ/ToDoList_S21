@@ -16,7 +16,11 @@ function setTasksInLocalStorage() {
 }
 
 let count = 0;
-tasksList.forEach((item) => (count = Math.max(item.id, count)));
+// tasksList.forEach((item) => (count = Math.max(item.id, count)));
+
+for (let item in tasksList) {
+  count = Math.max(item.id, count);
+}
 
 const btnAdd = document.querySelector('.btnAdd');
 const input = document.querySelector('input');
