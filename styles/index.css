@@ -72,7 +72,7 @@ main {
   align-items: center;
 }
 
-.toDo__list-input > input {
+.checkbox{
   width: 25px;
   height: 25px;
 }

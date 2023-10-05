@@ -1,11 +1,21 @@
 import { deleteTask } from './handlers.js';
+import { changeStatusTask } from './handlers.js';
 
-/* Функция создания книпки удаления и присвоенеи слушателя с контекстом */
+/* Функция создания книпки удаления и присвоенеи слушателя */
 export function createDeleteButton(item) {
   const btnDel = document.createElement('button');
   btnDel.classList.add('btnDel');
   btnDel.addEventListener('click', deleteTask.bind(this, item));
   return btnDel;
+}
+
+/* Функция создание checkboxb и добавления на него слушателя */
+export function createInputToChangeStatus(item) {
+  const inputCheckBox = document.createElement('input');
+  inputCheckBox.type = 'checkbox';
+  inputCheckBox.classList.add('checkbox');
+  inputCheckBox.addEventListener('click', changeStatusTask.bind(this, item));
+  return inputCheckBox;
 }
 
 /* Функиц создания разметки элемента задачи */
@@ -21,13 +31,14 @@ export function createItem(item) {
   }
 
   const deleteButton = createDeleteButton(item);
+  const inputCheckBox = createInputToChangeStatus(item);
 
-  listCard.innerHTML = `<div class="toDo__list-input" >
-  <input type="checkbox" class="checkbox" onclick="changeStatusTask""/> ${item.text}
-  </div>`;
+  const listCardInput = document.createElement('div');
+  listCardInput.classList.add('toDo__list-input');
+  listCardInput.innerHTML = `${item.text}`;
 
-  listCard.appendChild(deleteButton);
-  // listCard.appendChild(updateButton); // создать
-
+  listCardInput.prepend(inputCheckBox);
+  listCard.prepend(listCardInput);
+  listCard.append(deleteButton);
   list.appendChild(listCard);
 }

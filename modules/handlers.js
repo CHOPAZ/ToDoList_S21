@@ -16,10 +16,8 @@ export function renderTasks() {
 /* Удаление задачи */
 export function deleteTask(item) {
   const tasks = getTasksListFromStorage();
-
   const tasksList = tasks.filter((el) => el.id != item.id);
   setTasksInStorage(tasksList);
-
   renderTasks();
 }
 
@@ -48,13 +46,14 @@ export function addTask(event) {
 
 export function changeStatusTask(item) {
   const tasks = getTasksListFromStorage();
-  tasks.forEach((el) => {
+  tasks.map((el) => {
     if (el.id == item.id) {
       el.status = !el.status;
-      setTasksInStorage();
-      renderTasks();
+      return el.status;
     }
   });
+  setTasksInStorage(tasks);
+  renderTasks();
 }
 
 /* Доделать
