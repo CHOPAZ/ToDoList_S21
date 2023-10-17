@@ -16,7 +16,7 @@ export function renderTasks() {
 /* Удаление задачи */
 export function deleteTask(item) {
   const tasks = getTasksListFromStorage();
-  const tasksList = tasks.filter((el) => el.id != item.id);
+  const tasksList = tasks.filter((el) => el.id !== item.id);
   setTasksInStorage(tasksList);
   renderTasks();
 }
@@ -26,40 +26,38 @@ export function addTask(event) {
   event.preventDefault();
   const input = document.querySelector('input');
 
-  if (input.value.trim()) {
-    const obj = {
-      id: Date.now(),
-      status: false,
-      text: input.value,
-    };
-
-    const tasks = getTasksListFromStorage();
-
-    tasks.push(obj);
-    setTasksInStorage(tasks);
-
-    renderTasks();
-
-    input.value = '';
+  if (!input.value) {
+    return false;
   }
-}
 
-export function changeStatusTask(item) {
+  const obj = {
+    id: Date.now(),
+    status: false,
+    text: input.value.trim(),
+  };
   const tasks = getTasksListFromStorage();
-  tasks.map((el) => {
-    if (el.id == item.id) {
-      el.status = !el.status;
-      return el.status;
-    }
-  });
+  tasks.push(obj);
   setTasksInStorage(tasks);
   renderTasks();
+  input.value = '';
 }
 
-/* Доделать
-1. размететку +
-2. изменение статуса задачи
-3. импорты привенсти к одному типу +
-4. изменить название методов у сторейдж, без привязки к какому именно стореййджу +
-5.
-*/
+/* Изменение статуса задачи */
+export function changeStatusTask(item) {
+  const tasks = getTasksListFromStorage();
+
+  const changedTask = tasks.map((el) => ({
+    ...el,
+    status: el.id == item.id ? !el.status : el.status,
+  }));
+
+  setTasksInStorage(changedTask);
+  renderTasks();
+  /* 
+  const changedTask = tasks.map((el) => {
+    return {
+      ...el,
+      status: el.id == item.id ? !el.status : el.status,
+    }
+  } */
+}
